@@ -50,7 +50,6 @@ if menu == "Overview":
     st.title("📊 Real Estate Investment Overview")
     st.write("This tool helps you analyze real estate investments, compare renting vs. buying, and estimate potential returns.")
    
-    
 elif menu == "ROI Calculator":
     st.title("📈 Real Estate ROI Calculator")
     
@@ -94,9 +93,10 @@ elif menu == "Rent vs. Buy":
     mortgage_rate = st.slider("🏦 Mortgage Rate (%)", min_value=0.0, max_value=10.0, value=4.0, step=0.1)
     years = st.slider("⏳ Duration (Years)", min_value=1, max_value=30, value=10, step=1)
     inflation_rate = st.slider("📈 Rent Inflation Rate (%)", min_value=0.0, max_value=10.0, value=2.0, step=0.1)
-    
+    down_payment = st.number_input("💰 Down Payment ($)", min_value=0, value=40000, step=1000)  # Added down payment input
+
     if st.button("🔍 Compare"):
-        total_rent_paid, total_home_cost, break_even = calculate_rent_vs_buy(rent, home_price, mortgage_rate, years, inflation_rate)
+        total_rent_paid, total_home_cost, break_even = calculate_rent_vs_buy(rent, home_price, mortgage_rate, years, inflation_rate, down_payment)  # Passed down_payment here
         
         col1, col2 = st.columns(2)
         with col1:
